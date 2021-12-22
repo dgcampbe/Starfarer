@@ -18,9 +18,9 @@ def sign(message):
 def verify(message, signature):
     """Verify."""
     key = Crypto.PublicKey.ECC.import_key(open("keys/ECC_Public_key.pem").read())
-    h = Crypto.Hash.SHA256.new(message)
+    sha_hash = Crypto.Hash.SHA256.new(message)
     try:
-        Crypto.Signature.DSS.new(key, "fips-186-3").verify(h, signature)
+        Crypto.Signature.DSS.new(key, "fips-186-3").verify(sha_hash, signature)
         print("The signature is valid.")
         return True
     except (ValueError, TypeError):
@@ -31,10 +31,10 @@ def verify(message, signature):
 def generate_keys():
     """Generate keys."""
     private_key = Crypto.PublicKey.ECC.generate(curve="P-256")
-    f = open("keys/ECC_Private_key.pem", "wt")
-    f.write(private_key.export_key(format="PEM"))
-    f.close()
+    file = open("keys/ECC_Private_key.pem", "wt")
+    file.write(private_key.export_key(format="PEM"))
+    file.close()
     pub_key = private_key.public_key()
-    g = open("keys/ECC_Public_key.pem", "wt")
-    g.write(pub_key.export_key(format="PEM"))
-    g.close()
+    file = open("keys/ECC_Public_key.pem", "wt")
+    file.write(pub_key.export_key(format="PEM"))
+    file.close()

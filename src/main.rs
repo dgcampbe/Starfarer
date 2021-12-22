@@ -3,7 +3,6 @@ use std::string::String;
 use std::hash::{Hash, Hasher};
 //external crates
 //cryptography
-extern crate merkle;
 extern crate ring;
 //rand
 extern crate rand;
@@ -17,16 +16,13 @@ extern crate chrono;
 extern crate error_chain;
 //rayon
 extern crate rayon;
-//cpython -will be enabled later
-//#[macro_use]
-//extern crate cpython;
-//use cpython::{Python, PyResult};
+//Python Bindings
+//extern crate pyo3;
 
 struct Blockchain {
 
     name: String,
     genesis_block: Block<>
-
 }
 
 struct Block {
@@ -49,7 +45,7 @@ struct Transaction {
 
 impl std::fmt::Display for Transaction {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "(tokens: {:?}, locking_script: {}, payload: {})", self.tokens, self.locking_script, self.payload)
+        write!(f,"(tokens: {:?}, locking_script: {}, payload: {})", self.tokens, self.locking_script, self.payload)
     }
 }
 fn main() {
@@ -89,4 +85,3 @@ fn rand_test() {
     println!("First few bytes = {:?}; random int = {:?}",
         &my_secure_bytes[..5], my_secure_int);
 }
-//py_module_initializer!(tp2p, ) //needs work

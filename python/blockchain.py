@@ -15,7 +15,7 @@ import Crypto.Hash.SHA256
 import sign
 
 
-class Chain(object):
+class Chain:
     """Chain."""
 
     def __init__(self, addGenesis=True):
@@ -40,7 +40,7 @@ class Chain(object):
             print("Wrote block successfully.")
 
 
-class Block(object):
+class Block:
     """Block."""
 
     def __init__(self, size, vote, version, difficulty, timestamp, previous_block, data):
@@ -123,7 +123,7 @@ class GenesisBlock(Block):
         self.data = data
         self.nonce = 0
 
-class Transaction(object):
+class Transaction:
     """Transaction."""
 
     def __init__(self, token, giver, receiver, data_type, data):
@@ -155,7 +155,7 @@ class Transaction(object):
             return None
 
 
-class Token(object):
+class Token:
     """Token."""
 
     def __init__(self, permissions):
