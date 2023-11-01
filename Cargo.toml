@@ -15,7 +15,7 @@ publish = false
 
 [dependencies]
 merkle-cbt = "^0.2.2"
-log = "^0.4.11"
+log = "^0.4.20"
 ring = "^0.16.15"
 rand = "^0.7.3"
 time = "^0.2.17"
